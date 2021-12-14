@@ -10,4 +10,5 @@
 // iframe.style.removeProperty('max-width');
 // iframe.style.width = '100%';
 // iframe.style.minHeight = '70vh';
+
 Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('ControlAddInReady', '');

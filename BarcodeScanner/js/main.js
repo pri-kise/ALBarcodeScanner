@@ -16,7 +16,17 @@ async function initScanner() {
         Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('onScanSuccess', [decodedText]);
     };
     const config = { fps: 10, qrbox: { width: 250, height: 250 } };
-    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+    html5QrCode.start(
+        { facingMode: "environment" },
+        config,
+        qrCodeSuccessCallback)
+    .catch((err) => {
+        // Start failed, handle it.        
+        let controlAddin = document.getElementById("controlAddIn");
+        var outerDiv = document.createElement("div");
+        outerDiv.innerHTML = '<span>Missing Permission for camera</span>'
+        controlAddin.appendChild(outerDiv);
+    });
 }
 
 
